@@ -29,6 +29,9 @@ class Peer extends Base
 {
     protected $table = 'peers';
 
+    public const CREATED_AT = null;
+    public const UPDATED_AT = null;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');

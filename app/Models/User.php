@@ -19,6 +19,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property int             id       用户ID
  * @property string          username 用户名
  * @property string          password 密码
+ * @property int             is_admin 是否管理员
  * @property string          name     名字
  * @property string          email    邮箱
  * @property string          note     备注

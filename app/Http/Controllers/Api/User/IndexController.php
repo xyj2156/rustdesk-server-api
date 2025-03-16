@@ -14,6 +14,21 @@ class IndexController
 {
     public function __invoke(Request $request): array
     {
+        /** @var User $user */
+        $user = $request->user();
+        if (!$user->is_admin) {
+            return [
+                'total' => 1,
+                'data'  => [
+                    'name'     => $user->name ?: $user->username,
+                    'email'    => $user->email,
+                    'note'     => $user->note,
+                    'status'   => 1,
+                    'is_admin' => false,
+                ],
+            ];
+        }
+
         $current   = $request->get('current', 1);
         $page_size = $request->get('pageSize', 10);
         $status    = $request->get('status', 1);
@@ -31,7 +46,7 @@ class IndexController
                     'email'    => $item->email,
                     'note'     => $item->note,
                     'status'   => 1,
-                    'is_admin' => false,
+                    'is_admin' => (bool)$item->is_admin,
                 ];
             }),
         ];

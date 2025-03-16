@@ -14,12 +14,13 @@ return new class extends Migration {
             $table->unsignedInteger('id', true)->comment('用户ID');
             $table->string('username', 32)->default('')->comment('用户名')->unique();
             $table->string('password', 128)->default('')->comment('密码');
+            $table->unsignedTinyInteger('admin')->default(0)->comment('管理员');
             $table->string('name')->default('')->comment('姓名');
             $table->string('email', 64)->default('')->comment('邮箱');
             $table->string('note')->default('')->comment('备注');
 
-            $table->softDeletes();
             $table->datetimes();
+            $table->softDeletesDatetime();
             $table->comment('用户表');
         });
     }

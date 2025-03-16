@@ -21,7 +21,7 @@ use Illuminate\Support\Carbon;
  */
 class Token extends Base
 {
-    protected $table = 'token';
+    protected $table = 'tokens';
 
     /**
      * 关联用户

@@ -11,9 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('peers', function (Blueprint $table) {
-            $table->unsignedInteger('id')->comment('ID')->primary();
+            $table->unsignedInteger('id', true)->comment('ID');
             $table->unsignedInteger('user_id')->comment('用户ID')->index();
-            $table->char('peer_id', 16)->default('')->comment('设备ID')->unique();
+            $table->string('peer_id', 16)->default('')->comment('设备ID')->unique();
             $table->string('hash', 128)->nullable()->default('')->comment('设备连接密码');
             $table->string('username', 128)->default('')->comment('操作系统用户名');
             $table->string('hostname', 128)->default('')->comment('操作系统名');

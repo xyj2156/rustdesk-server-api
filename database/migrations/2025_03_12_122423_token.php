@@ -10,11 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('token', function (Blueprint $table) {
+        Schema::create('tokens', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id')->comment('用户id')->index();
-            $table->string('my_id');
-            $table->string('uuid');
+            $table->string('my_id', 16);
+            $table->char('uuid', 64);
             $table->char('token', 64)->comment('token');
             $table->dateTime('expired');
             $table->dateTimes();
@@ -28,6 +28,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('token');
+        Schema::dropIfExists('tokens');
     }
 };
